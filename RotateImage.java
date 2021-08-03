@@ -1,4 +1,8 @@
 public class RotateImage {
+
+
+    //Time - O(n^2) + O(n^2) --- Space - O(1)
+
     public void rotate(int[][] matrix) {
 
         transpose(matrix);
