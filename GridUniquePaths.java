@@ -4,15 +4,32 @@ public class GridUniquePaths {
 
         int[][] dp = new int[3][7];
 
-        int paths =  gridPaths(0 , 0 , 3, 7 ,dp);
-
+//        int paths =  gridPaths(0 , 0 , 3, 7 ,dp);
+        int paths = gridPaths(3 , 7);
         System.out.println(paths);;
 
 
     }
 
+    //Time - O(n) / o(m) -- Space - O(1)
+    public static int gridPaths(int n , int m) {
+        int N = n + m -2;
+        int r = n-1;
 
-    //Time - O() --- Space - O();
+        double res  = 1;
+
+        for(int i = 1 ; i <= r ; i++){
+           res = res * (N - r + i) / i;
+        }
+
+        return (int)res;
+    }
+
+
+
+
+    //Without DP this algorithm takes exponential time complexity
+    //After using Dp -- Time - O(n * m) --- Space - O(n * m)
 
 
     public static int gridPaths(int i , int j , int m , int n , int[][] dp){
@@ -38,5 +55,7 @@ public class GridUniquePaths {
         return c;
 
     }
+
+
 
 }
