@@ -16,6 +16,8 @@ public class ReversePairs {
 //
 //        return c;
 //    }
+
+
     public static void main(String[] args) {
 
         int nums[] = {1,3,2,3,1};
@@ -40,47 +42,49 @@ public class ReversePairs {
 
     public static int merge(int[] nums , int low , int mid , int high) {
 
-//        int c = 0;
-//
-//        int j = mid + 1;
-//
-//        for (int i = low; k <= mid; k++) {
-//
-//            while (hi <= j && nums[k] > (2 * (long) nums[k])) {
-//                hi++;
-//            }
-//
-//            c += (hi - (mid + 1));
-//
-//        }
+        int c = 0;
+
+        int j = mid + 1;
+
+        for (int i = low; i <= mid; i++) {
+
+            while (j <= high && nums[i] > (2 * (long) nums[j])) {
+                j++;
+            }
+
+            c += (j - (mid + 1));
+
+        }
 
 
         ArrayList<Integer> temp = new ArrayList<>();
 
         int i = low;
 
-        int j = mid + 1;
+        j = mid + 1;
 
         while (i <= mid && j <= high) {
 
-            if (nums[i] <= nums[]) {
-                temp.add(nums[li++]);
+            if (nums[i] <= nums[j]) {
+                temp.add(nums[i++]);
             } else {
-                temp.add(nums[ri++]);
+                temp.add(nums[j++]);
             }
 
         }
 
-        while (li <= mid) {
-            temp.add(nums[li++]);
+        while (i <= mid) {
+            temp.add(nums[i++]);
         }
 
-        while (ri <= j) {
-            temp.add(nums[ri++]);
+        while (j <= high) {
+            temp.add(nums[j++]);
         }
 
-        for (int e = i; e <= j; e++) {
-            nums[e] = temp.get(e - i);
+        System.out.println(temp);
+
+        for(int li = low; li <= high; li++) {
+            nums[li] = temp.get(li - low);
         }
 
         return c;
